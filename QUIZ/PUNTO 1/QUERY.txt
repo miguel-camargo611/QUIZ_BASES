@@ -1,0 +1,9 @@
+-- Muestra todos los registros de la tabla tic_2023
+
+SELECT * 
+FROM ActividadesenlosquesonutilizadoslosbienesTICparaenseanza2023copia
+
+-- Muestra únicamente los valores distintos que existen en la columna ACTIVIDAD_NOMBRE de la tabla tic_2023
+
+SELECT DISTINCT ACTIVIDAD_NOMBRE
+FROM ActividadesenlosquesonutilizadoslosbienesTICparaenseanza2023copia;

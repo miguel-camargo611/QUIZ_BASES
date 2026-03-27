@@ -1,0 +1,29 @@
+WITH conteo_2022 AS (
+    SELECT 
+        sede_codigo, 
+        COUNT(*) AS total_act_2022
+    FROM ActividadesenlosquesonutilizadoslosbienesTICparaenseanza2022copia
+    GROUP BY sede_codigo
+),
+conteo_2023 AS (
+    SELECT 
+        sede_codigo, 
+        COUNT(*) AS total_act_2023
+    FROM ActividadesenlosquesonutilizadoslosbienesTICparaenseanza2023copia
+    GROUP BY sede_codigo
+)
+SELECT 
+    conteo_2022.sede_codigo AS codigo_sede,
+    conteo_2022.total_act_2022,
+    conteo_2023.total_act_2023,
+    (conteo_2023.total_act_2023 - conteo_2022.total_act_2022) AS diferencia,
+    CASE 
+        WHEN (conteo_2023.total_act_2023 - conteo_2022.total_act_2022) > 0 THEN 'CRECIÓ'
+        WHEN (conteo_2023.total_act_2023 - conteo_2022.total_act_2022) < 0 THEN 'DECRECIÓ'
+        ELSE 'SIN CAMBIO'
+    END AS tendencia
+FROM conteo_2022
+INNER JOIN conteo_2023 ON conteo_2022.sede_codigo = conteo_2023.sede_codigo
+WHERE conteo_2022.total_act_2022 >= 2
+ORDER BY diferencia DESC
+LIMIT 30;

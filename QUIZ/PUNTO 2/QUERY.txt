@@ -1,0 +1,4 @@
+SELECT sede_codigo AS codigo_sede, periodo_anio AS anio_reporte, actividad_codigo AS cod_actividad, actividad_nombre AS nombre_actividad
+FROM ActividadesenlosquesonutilizadoslosbienesTICparaenseanza2022copia
+ORDER BY sede_codigo ASC
+LIMIT 50;

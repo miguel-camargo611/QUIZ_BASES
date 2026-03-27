@@ -1,0 +1,9 @@
+CREATE TABLE tic_sedes_resumen (
+    resumen_id INT,
+    sede_codigo INT,
+    anio INT,
+    Total_actividades INT,
+    Tiene_internet BOOLEAN,
+    Fecha_carga DATETIME,
+    CONSTRAINT unico_sede_anio UNIQUE (sede_codigo, anio)
+);
